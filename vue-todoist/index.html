@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<title>Vue Todoist</title>
+</head>
+<body class="bg-gray-50">
+	<div id="todoisApp" class="w-full lg:w-2/4 mx-auto my-auto">
+		<section class="w-full p-10">
+			<h3 class="text-3xl font-bold">My Todoist</h3>
+			<section>
+				<section class="w-full">
+					<label for="item" class="block font-bold text-sm leading-2 tracking-normal">Add New Todo to List</label>
+					<input type="text" v-model="newTodo" class="w-full appearance-none mt-2 border border-gray-300 rounded-md bg-white text-base text-gray-900 py-1 px-2" @keyup.enter="addTodo">
+				</section>
+				<section class="w-full mt-4">
+					<button class="bg-indigo-600 px-4 py-2 font-bold text-sm rounded-md text-white" @click="addTodo">Add Todo</button>
+				</section>
+			</section>
+		</section>
+
+		<section class="w-full lg:w-2/4 p-10">
+			<h3 class="text-2xl font-bold">ToDo List</h3>
+			<ul class="mt-5">
+				<li v-for="todo in todos">{{ todo }}</li>
+			</ul>
+
+		</section>
+	</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
