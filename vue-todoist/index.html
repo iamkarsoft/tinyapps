@@ -7,21 +7,27 @@
 	<title>Vue Todoist</title>
 </head>
 <body class="bg-gray-50">
-	<div id="todoisApp" class="w-full lg:w-2/4 mx-auto my-auto">
+	<div id="todoisApp" class="w-full mx-auto my-auto lg:w-2/4">
 		<section class="w-full p-10">
-			<h3 class="text-3xl font-bold">My Todoist</h3>
-			<section>
+			<header class="w-full lg:flex justify-between">
+			<h3 class="text-3xl font-bold" >{{header}}</h3>
+				<section>
+					<button v-if="state === 'default'" @click="changeState('create')">Create</button>
+					<button  v-else @click="changeState('default')">Cancel</button>
+				</section>
+			</header>
+			<section class="mt-3" v-if="state === 'create'">
 				<section class="w-full">
-					<label for="item" class="block font-bold text-sm leading-2 tracking-normal">Add New Todo to List</label>
-					<input type="text" v-model="newTodo" class="w-full appearance-none mt-2 border border-gray-300 rounded-md bg-white text-base text-gray-900 py-1 px-2" @keyup.enter="addTodo">
+					<label for="item" class="block text-sm font-bold tracking-normal leading-2">Add New Todo to List</label>
+					<input type="text" v-model="newTodo" class="w-full px-2 py-1 mt-2 text-base text-gray-900 bg-white border border-gray-300 rounded-md appearance-none" @keyup.enter="addTodo">
 				</section>
 				<section class="w-full mt-4">
-					<button class="bg-indigo-600 px-4 py-2 font-bold text-sm rounded-md text-white" @click="addTodo">Add Todo</button>
+					<button class="px-4 py-2 text-sm font-bold text-white bg-indigo-600 rounded-md" @click="addTodo" v-on:keyup.enter="addTodo">Add Todo</button>
 				</section>
 			</section>
 		</section>
 
-		<section class="w-full lg:w-2/4 p-10">
+		<section class="w-full p-10 lg:w-2/4">
 			<h3 class="text-2xl font-bold">ToDo List</h3>
 			<ul class="mt-5">
 				<li v-for="todo in todos">{{ todo }}</li>
