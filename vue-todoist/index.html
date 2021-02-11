@@ -22,7 +22,7 @@
 					<input type="text" v-model="newTodo" class="w-full px-2 py-1 mt-2 text-base text-gray-900 bg-white border border-gray-300 rounded-md appearance-none" @keyup.enter="addTodo">
 				</section>
 				<section class="w-full mt-4">
-					<button class="px-4 py-2 text-sm font-bold text-white bg-indigo-600 rounded-md" @click="addTodo" v-on:keyup.enter="addTodo">Add Todo</button>
+					<button class="px-4 py-2 text-sm font-bold text-white bg-indigo-600 disabled:opacity-50 rounded-md" @click="addTodo" @keyup.enter="addTodo" :disabled="newTodo.length===0">Add Todo</button>
 				</section>
 			</section>
 		</section>
@@ -30,9 +30,9 @@
 		<section class="w-full p-10 lg:w-2/4">
 			<h3 class="text-2xl font-bold">ToDo List</h3>
 			<ul class="mt-5">
-				<li v-for="todo in todos">{{ todo }}</li>
+				<li v-for="todo in todos" class="font-bold text-indigo-500" :class="{'line-through font-bold text-gray-500': todo.purchased}" @click="togglePurchased(todo)">{{ todo.label }}</li>
 			</ul>
-
+ 
 		</section>
 	</div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>

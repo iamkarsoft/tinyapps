@@ -4,11 +4,13 @@ const todoist = new Vue({
 		header: "Todoist App",
 		state: 'default',
 		newTodo: '',
-		todos: [],
+		todos: [
+
+		],
 	},
 	methods:{
 		addTodo(newTodo){
-			this.todos.push(this.newTodo);
+			this.todos.push({label:this.newTodo,purchased: false});
 			this.newTodo= '';
 		},
 		deleteTodo(){
@@ -17,6 +19,9 @@ const todoist = new Vue({
 		changeState(newState){
 			this.state = newState;
 			this.newState = '';
+		},
+		togglePurchased(todo){
+			todo.purchased =!todo.purchased;
 		}
 	}
 });
