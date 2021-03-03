@@ -11,11 +11,16 @@
 		 <h1 class="text-2xl my-5"> Vue.Js Components Fundamenals</h1>
 		 <click-counter></click-counter>
 
-		 <plan v-for="plan in plans" :name="plan"></plan>
-		 
+		 <plan-picker></plan-picker>
 	</div>
 <script type="text/x-template" id="click-counter-template">
 	<button @click="count++">{{count}}</button>
+</script>
+
+<script type="text/x-template" id="plan-picker-template">
+	<div>
+	 <plan v-for="plan in plans" :name="plan"></plan>
+	</div>
 </script>
 
 <script type="text/x-template" id="plan-template">
@@ -23,6 +28,8 @@
 		{{name}}
 	</div>
 </script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="app.js"></script>
 </body>

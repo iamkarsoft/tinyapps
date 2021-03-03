@@ -1,4 +1,13 @@
 
+Vue.component('plan-picker', {
+	template: '#plan-picker-template',
+	data(){
+		return{
+			plans: ['Jude','Germain'],
+		}
+	}
+})
+
 Vue.component('click-counter',{
 	template: '#click-counter-template',
 	data (){
@@ -20,10 +29,8 @@ Vue.component('plan',{
 	}
 })
 
+
+
 const app = new Vue({
 	el: "#app",
-	data: {
-		plans: ['Jude','Germain'],
-	}
-
 });
